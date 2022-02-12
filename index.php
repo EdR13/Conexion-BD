@@ -29,8 +29,14 @@
 
             $stmt->setFetchMode(PDO::FETCH_ASSOC);
             
-            if(count($_GET)>0)
+            if($stmt->rowCount() == 0)
             {
+                echo "
+                <br>
+                <h2>Aún no has agregado ningún disco :c.</h2>
+                <br>";
+            } 
+            else {
                 echo "
                 <br>
                 <h2>Estos son los discos que has agregado.</h2>
@@ -51,12 +57,6 @@
                     echo "</tr>";
                 }
                 echo "</table>";
-            } 
-            else {
-                echo "
-                <br>
-                <h2>Aún no has agregado ningún disco :c.</h2>
-                <br>";
             }
 
         ?>
