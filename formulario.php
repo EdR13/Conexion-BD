@@ -5,6 +5,8 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Formulario</title>
+        <link rel="stylesheet" type="text/css" href="styles.css" />
+        <link rel="icon" type="image/x-icon" href="imgs/release.png" />
     </head>
     <body>
         <?php
@@ -42,7 +44,9 @@
                 <option value="Metal">Metal</option>
             </select>
             <br>
+            <label></label>
             <input type="submit" value="Enviar">
+            <br>
         </form>
     </body>
 </html>

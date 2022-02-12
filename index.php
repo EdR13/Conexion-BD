@@ -5,6 +5,8 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Inicio</title>
+        <link rel="stylesheet" type="text/css" href="styles.css" />
+        <link rel="icon" type="image/x-icon" href="imgs/cds.png" />
     </head>
     <?php
         include("conexion.php");
@@ -26,22 +28,37 @@
             $stmt->execute();
 
             $stmt->setFetchMode(PDO::FETCH_ASSOC);
-
-            echo "<table border='1'>
-            <tr>
-            <th>Título</th>
-            <th>Artista</th>
-            <th>Género</th>
-            </tr>";
-
-            foreach ($stmt->fetchAll() as $row) {
-                echo "<tr>";
-                echo "<td>" . $row['titulo'] . "</td>";
-                echo "<td>" . $row['artista'] . "</td>"; 
-                echo "<td>" . $row['genero'] . "</td>";  
-                echo "</tr>";
+            
+            if(count($_GET)>0)
+            {
+                echo "
+                <br>
+                <h2>Estos son los discos que has agregado.</h2>
+                <br>";
+    
+                echo "<table border='1'>
+                <tr>
+                <th>Título</th>
+                <th>Artista</th>
+                <th>Género</th>
+                </tr>";
+    
+                foreach ($stmt->fetchAll() as $row) {
+                    echo "<tr>";
+                    echo "<td>" . $row['titulo'] . "</td>";
+                    echo "<td>" . $row['artista'] . "</td>"; 
+                    echo "<td>" . $row['genero'] . "</td>";  
+                    echo "</tr>";
+                }
+                echo "</table>";
+            } 
+            else {
+                echo "
+                <br>
+                <h2>Aún no has agregado ningún disco :c.</h2>
+                <br>";
             }
-            echo "</table>"
+
         ?>
 
     </body>
